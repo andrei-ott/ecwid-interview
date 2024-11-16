@@ -20,6 +20,7 @@ export default [
   {
     rules: {
       semi: ["error", "always"],
+      "no-extra-semi": "error",
       "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }]
     }
   }
