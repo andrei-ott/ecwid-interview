@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
 import Navbar from '@/components/Navbar.vue';
+import { useCategoriesStore } from '@/store';
+
+const categoriesStore = useCategoriesStore();
+categoriesStore.setCategories();
 </script>
 
 <template>
