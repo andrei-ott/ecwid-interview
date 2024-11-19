@@ -3,37 +3,50 @@ import { useCategoriesStore, useProductsStore } from '@/store';
 import { storeToRefs } from 'pinia';
 import ProductsList from '@/components/ProductsList.vue';
 import Loader from '@/components/Loader.vue';
+import ErrorWarning from '@/components/ErrorWarning.vue';
 
 const categoriesStore = useCategoriesStore();
-const { categories, isLoading: isCategoriesLoading } = storeToRefs(categoriesStore);
+const {
+  categories,
+  isLoading: isCategoriesLoading,
+  isError: isCategoriesError,
+} = storeToRefs(categoriesStore);
 
 const productsStore = useProductsStore();
-const { products, isLoading: isProductsLoading } = storeToRefs(productsStore);
+const {
+  products,
+  isLoading: isProductsLoading,
+  isError: isProductsError,
+} = storeToRefs(productsStore);
 </script>
 
 <template>
-  <section class="mb-10">
-    <h1 class="text-3xl font-bold mb-4">Categories</h1>
+  <ErrorWarning v-if="isCategoriesError || isProductsError" />
 
-    <Loader v-if="isCategoriesLoading" />
+  <template v-else>
+    <section class="mb-10">
+      <h1 class="text-3xl font-bold mb-4">Categories</h1>
 
-    <div v-else class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-      <RouterLink
-        v-for="category in categories"
-        :key="category.id"
-        :to="`/category/${category.id}`"
-        class="bg-green-700 hover:bg-green-900 text-white font-bold py-4 px-4 rounded-md text-center"
-      >
-        {{ category.name }}
-      </RouterLink>
-    </div>
-  </section>
+      <Loader v-if="isCategoriesLoading" />
 
-  <section>
-    <h1 class="text-3xl font-bold mb-4">All Products</h1>
+      <div v-else class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <RouterLink
+          v-for="category in categories"
+          :key="category.id"
+          :to="`/category/${category.id}`"
+          class="bg-green-700 hover:bg-green-900 text-white font-bold py-4 px-4 rounded-md text-center"
+        >
+          {{ category.name }}
+        </RouterLink>
+      </div>
+    </section>
 
-    <Loader v-if="isProductsLoading" />
+    <section>
+      <h1 class="text-3xl font-bold mb-4">All Products</h1>
 
-    <ProductsList v-else :products="products" />
-  </section>
+      <Loader v-if="isProductsLoading" />
+
+      <ProductsList v-else :products="products" />
+    </section>
+  </template>
 </template>

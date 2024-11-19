@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Product } from '@/types';
-import { useProductsStore } from '@/store';
 import { useRoute } from 'vue-router';
 import AddToCartButton from '@/components/AddToCartButton.vue';
 
@@ -10,9 +9,6 @@ const categoryId = route.params.categoryId;
 const { product } = defineProps({
   product: { type: Object as Product, required: true },
 });
-
-const productsStore = useProductsStore();
-const { addProductToCart, removeProductFromCart } = productsStore;
 </script>
 
 <template>
