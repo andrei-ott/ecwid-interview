@@ -10,7 +10,7 @@ export const useProductsStore = defineStore('products', {
     isError: false,
   }),
   getters: {
-    cartTotalPriceFormatted(): number {
+    cartTotalPriceFormatted(): string {
       const totalPrice = this.products.reduce(
         (acc, product) => acc + product.defaultDisplayedPrice * (product.count || 0),
         0,

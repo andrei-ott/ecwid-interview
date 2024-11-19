@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { Product } from '@/types';
-import { useProductsStore } from 'src/stores';
+import { useProductsStore } from '@/stores';
+import type { PropType } from 'vue';
 
 const { product } = defineProps({
-  product: { type: Object as Product, required: true },
+  product: { type: Object as PropType<Product>, required: true },
 });
 
 const productsStore = useProductsStore();

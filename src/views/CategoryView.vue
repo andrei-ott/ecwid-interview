@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-import { useCategoriesStore, useProductsStore } from 'src/stores';
+import { useCategoriesStore, useProductsStore } from '@/stores';
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import ProductsList from '@/components/ProductsList.vue';
@@ -25,7 +25,7 @@ const {
   isError: isProductsError,
 } = storeToRefs(productsStore);
 const filteredProducts = computed(() =>
-  products.value.filter((product) => product.categoryIds.includes(parseInt(categoryId))),
+  products.value.filter((product) => product.categoryIds.includes(parseInt(categoryId as string))),
 );
 </script>
 

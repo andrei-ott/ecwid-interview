@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCategoriesStore, useProductsStore } from 'src/stores';
+import { useCategoriesStore, useProductsStore } from '@/stores';
 import { storeToRefs } from 'pinia';
 import ProductsList from '@/components/ProductsList.vue';
 import Loader from '@/components/Loader.vue';

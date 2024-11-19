@@ -22,7 +22,8 @@ export default [
       semi: ["error", "always"],
       "no-extra-semi": "error",
       "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
-      "vue/multi-word-component-names": ["off"]
+      "vue/multi-word-component-names": ["off"],
+      "@typescript-eslint/ban-ts-comment": ["off"]
     }
   }
 ];

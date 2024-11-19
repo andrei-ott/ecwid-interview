@@ -2,12 +2,13 @@
 import type { Product } from '@/types';
 import { useRoute } from 'vue-router';
 import AddToCartButton from '@/components/AddToCartButton.vue';
+import type { PropType } from 'vue';
 
 const route = useRoute();
 const categoryId = route.params.categoryId;
 
 const { product } = defineProps({
-  product: { type: Object as Product, required: true },
+  product: { type: Object as PropType<Product>, required: true },
 });
 </script>
 

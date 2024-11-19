@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { Product } from '@/types';
 import ProductCard from '@/components/ProductCard.vue';
+import type { PropType } from 'vue';
 
 const { products } = defineProps({
-  products: { type: Object as Product[], required: true },
+  products: { type: Object as PropType<Product[]>, required: true },
 });
 </script>
 

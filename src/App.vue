@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
 import Navbar from '@/components/Navbar.vue';
-import { useCartStore, useCategoriesStore, useProductsStore } from 'src/stores';
+import { useCartStore, useCategoriesStore, useProductsStore } from '@/stores';
 
 const cartStore = useCartStore();
 cartStore.setItemsFromStorage();
