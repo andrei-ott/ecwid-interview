@@ -2,13 +2,14 @@
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { useCategoriesStore, useProductsStore } from '@/store';
 import { storeToRefs } from 'pinia';
+import ProductCard from '@/components/ProductCard.vue';
+import ProductsList from '@/components/ProductsList.vue';
 
 const categoriesStore = useCategoriesStore();
 const { categories, isLoading: isCategoriesLoading } = storeToRefs(categoriesStore);
 
 const productsStore = useProductsStore();
 const { products, isLoading: isProductsLoading } = storeToRefs(productsStore);
-const { addProduct, deleteProduct } = productsStore;
 </script>
 
 <template>
@@ -34,37 +35,6 @@ const { addProduct, deleteProduct } = productsStore;
 
     <PulseLoader v-if="isProductsLoading" color="green" class="text-center" />
 
-    <div v-else class="grid grid-cols-2 sm:grid-cols-3 gap-6 gap-y-12">
-      <div v-for="product in products" :key="product.id" class="flex flex-col justify-between">
-        <RouterLink
-          :to="`/category/${product.id}`"
-          class="flex flex-col align-center text-gray-800"
-        >
-          <img :src="product.imageUrl" :alt="product.name" />
-
-          <h2 class="mx-2 mt-1 text-center text-lg">{{ product.name }}</h2>
-          <p class="text-lg text-center mb-2">{{ product.defaultDisplayedPriceFormatted }}</p>
-        </RouterLink>
-
-        <div class="flex justify-center">
-          <button
-            v-if="!product.count"
-            class="bg-green-700 hover:bg-green-900 text-white py-2 px-7 rounded-md text-center mx-auto mt-auto"
-            @click="addProduct(product.id)"
-          >
-            Add to cart
-          </button>
-
-          <div
-            v-else
-            class="flex items-center justify-between border border-green-700 text-xl rounded-md w-36 mx-auto"
-          >
-            <button @click="deleteProduct(product.id)" class="h-full py-1 px-2">-</button>
-            <span class="mx-2.5">{{ product.count || 0 }}</span>
-            <button @click="addProduct(product.id)" class="h-full py-1 px-2">+</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ProductsList v-else :products="products" />
   </section>
 </template>
