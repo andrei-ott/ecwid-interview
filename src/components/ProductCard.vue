@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { Product } from '@/types';
 import { useProductsStore } from '@/store';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const categoryId = route.params.categoryId;
 
 const { product } = defineProps({
   product: { type: Object as Product, required: true },
@@ -13,7 +17,7 @@ const { addProduct, deleteProduct } = productsStore;
 <template>
   <div class="flex flex-col justify-between">
     <RouterLink
-      :to="`/category/${product.id}`"
+      :to="{ path: `/product/${product.id}`, query: { categoryId } }"
       class="flex flex-col align-center text-gray-800 product-card hover:text-green-700"
     >
       <div class="img-wrap">

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { useCategoriesStore, useProductsStore } from '@/store';
 import { storeToRefs } from 'pinia';
 import ProductsList from '@/components/ProductsList.vue';
+import Loader from '@/components/Loader.vue';
 
 const categoriesStore = useCategoriesStore();
 const { categories, isLoading: isCategoriesLoading } = storeToRefs(categoriesStore);
@@ -15,7 +15,7 @@ const { products, isLoading: isProductsLoading } = storeToRefs(productsStore);
   <section class="mb-10">
     <h1 class="text-3xl font-bold mb-4">Categories</h1>
 
-    <PulseLoader v-if="isCategoriesLoading" color="green" class="text-center" />
+    <Loader v-if="isCategoriesLoading" />
 
     <div v-else class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
       <RouterLink
@@ -32,7 +32,7 @@ const { products, isLoading: isProductsLoading } = storeToRefs(productsStore);
   <section>
     <h1 class="text-3xl font-bold mb-4">All Products</h1>
 
-    <PulseLoader v-if="isProductsLoading" color="green" class="text-center" />
+    <Loader v-if="isProductsLoading" />
 
     <ProductsList v-else :products="products" />
   </section>

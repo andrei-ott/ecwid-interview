@@ -11,14 +11,14 @@ export const useCategoriesStore = defineStore('categories', {
   actions: {
     async setCategories() {
       this.isLoading = true;
-      this.isError = true;
+      this.isError = false;
 
       try {
         this.categories = await getCategories();
-        this.isLoading = false;
       } catch {
-        this.isLoading = false;
         this.isError = true;
+      } finally {
+        this.isLoading = false;
       }
     },
   },
@@ -33,14 +33,14 @@ export const useProductsStore = defineStore('products', {
   actions: {
     async setProducts() {
       this.isLoading = true;
-      this.isError = true;
+      this.isError = false;
 
       try {
         this.products = await getProducts();
-        this.isLoading = false;
       } catch {
-        this.isLoading = false;
         this.isError = true;
+      } finally {
+        this.isLoading = false;
       }
     },
     addProduct(productId: string) {

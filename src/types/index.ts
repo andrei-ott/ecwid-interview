@@ -8,6 +8,8 @@ export interface Product {
   name: string;
   imageUrl: string;
   defaultDisplayedPriceFormatted: string;
-  count?: number;
   categoryIds: number[];
+  description: string;
+
+  count?: number;
 }

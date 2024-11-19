@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import { useCategoriesStore, useProductsStore } from '@/store';
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import ProductsList from '@/components/ProductsList.vue';
+import Loader from '@/components/Loader.vue';
 
 const route = useRoute();
 const categoryId = route.params.categoryId;
@@ -19,7 +19,7 @@ const filteredProducts = computed(() => products.value.filter(product => product
 </script>
 
 <template>
-  <PulseLoader v-if="isCategoriesLoading || isProductsLoading" :color="'green'" />
+  <Loader v-if="isCategoriesLoading || isProductsLoading" />
 
   <section v-else>
     <h1 class="text-3xl font-bold mb-4">{{ category?.name }}</h1>
