@@ -2,7 +2,6 @@
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { useCategoriesStore, useProductsStore } from '@/store';
 import { storeToRefs } from 'pinia';
-import ProductCard from '@/components/ProductCard.vue';
 import ProductsList from '@/components/ProductsList.vue';
 
 const categoriesStore = useCategoriesStore();

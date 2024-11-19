@@ -9,4 +9,5 @@ export interface Product {
   imageUrl: string;
   defaultDisplayedPriceFormatted: string;
   count?: number;
+  categoryIds: number[];
 }
