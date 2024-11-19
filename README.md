@@ -1,10 +1,8 @@
 # vue-interview-16-09-24
 
-This template should help get you started developing with Vue 3 in Vite.
+## Link to project
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+https://ecwid-interview.netlify.app/
 
 ## Type Support for `.vue` Imports in TS
 
