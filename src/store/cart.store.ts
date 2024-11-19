@@ -7,6 +7,11 @@ export const useCartStore = defineStore('cart', {
   state: () => ({
     items: [] as CartItem[],
   }),
+  getters: {
+    totalCount(): number {
+      return this.items.reduce((acc, item) => acc + item.count, 0);
+    }
+  },
   actions: {
     getItemsFromStorage() {
       const storage = JSON.parse(localStorage.getItem(CART_STORAGE_KEY));
