@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-import { useCategoriesStore, useProductsStore } from '@/store';
+import { useCategoriesStore, useProductsStore } from 'src/stores';
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import AddToCartButton from '@/components/AddToCartButton.vue';

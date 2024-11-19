@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Product } from '@/types';
-import { useProductsStore } from '@/store';
+import { useProductsStore } from 'src/stores';
 
 const { product } = defineProps({
   product: { type: Object as Product, required: true },

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
 import Navbar from '@/components/Navbar.vue';
-import { useCartStore, useCategoriesStore, useProductsStore } from '@/store';
+import { useCartStore, useCategoriesStore, useProductsStore } from 'src/stores';
 
 const cartStore = useCartStore();
-cartStore.getItemsFromStorage();
+cartStore.setItemsFromStorage();
 
 const categoriesStore = useCategoriesStore();
 categoriesStore.setCategories();

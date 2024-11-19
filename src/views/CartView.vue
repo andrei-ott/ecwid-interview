@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCartStore, useProductsStore } from '@/store';
+import { useCartStore, useProductsStore } from 'src/stores';
 import { storeToRefs } from 'pinia';
 import Loader from '@/components/Loader.vue';
 import { computed } from 'vue';
