@@ -48,10 +48,10 @@ const product = computed(() =>
           </RouterLink>
         </div>
 
-        <div class="flex">
-          <img class="w-1/2" :src="product.imageUrl" :alt="product.name" />
+        <div class="flex flex-col md:flex-row gap-8">
+          <img class="w-full md:w-1/2 object-cover" :src="product.imageUrl" :alt="product.name" />
 
-          <div class="w-full ps-8">
+          <div class="w-full">
             <h1 class="text-3xl mb-6">{{ product.name }}</h1>
 
             <div class="text-2xl mb-3 font-semibold">
