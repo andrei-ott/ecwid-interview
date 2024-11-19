@@ -2,6 +2,7 @@
 import type { Product } from '@/types';
 import { useProductsStore } from '@/store';
 import { useRoute } from 'vue-router';
+import AddToCartButton from '@/components/AddToCartButton.vue';
 
 const route = useRoute();
 const categoryId = route.params.categoryId;
@@ -11,7 +12,7 @@ const { product } = defineProps({
 });
 
 const productsStore = useProductsStore();
-const { addProduct, deleteProduct } = productsStore;
+const { addProductToCart, removeProductFromCart } = productsStore;
 </script>
 
 <template>
@@ -25,26 +26,11 @@ const { addProduct, deleteProduct } = productsStore;
       </div>
 
       <h2 class="px-2 pt-1 text-center text-lg bg-white z-10">{{ product.name }}</h2>
-      <p class="text-lg text-center mb-2">{{ product.defaultDisplayedPriceFormatted }}</p>
+      <p class="text-lg text-center mb-2 font-semibold mt-2">{{ product.defaultDisplayedPriceFormatted }}</p>
     </RouterLink>
 
     <div class="flex justify-center">
-      <button
-        v-if="!product.count"
-        class="bg-green-700 hover:bg-green-900 text-white py-2 px-7 rounded-md text-center mx-auto mt-auto"
-        @click="addProduct(product.id)"
-      >
-        Add to cart
-      </button>
-
-      <div
-        v-else
-        class="flex items-center justify-between border border-green-700 text-xl rounded-md w-36 mx-auto"
-      >
-        <button @click="deleteProduct(product.id)" class="h-full py-1 px-2">-</button>
-        <span class="mx-2.5">{{ product.count || 0 }}</span>
-        <button @click="addProduct(product.id)" class="h-full py-1 px-2">+</button>
-      </div>
+      <AddToCartButton :product="product" />
     </div>
   </div>
 </template>

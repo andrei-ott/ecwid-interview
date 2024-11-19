@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
 import Navbar from '@/components/Navbar.vue';
-import { useCategoriesStore, useProductsStore } from '@/store';
+import { useCartStore, useCategoriesStore, useProductsStore } from '@/store';
+
+const cartStore = useCartStore();
+cartStore.getItemsFromStorage();
 
 const categoriesStore = useCategoriesStore();
 categoriesStore.setCategories();
@@ -17,6 +20,3 @@ productsStore.setProducts();
     <RouterView />
   </div>
 </template>
-
-<style scoped>
-</style>

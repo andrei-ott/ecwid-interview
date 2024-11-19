@@ -40,7 +40,7 @@ const product = computed(() =>
       <div class="w-full ps-8">
         <h1 class="text-3xl mb-6">{{ product.name }}</h1>
 
-        <div class="text-2xl mb-2">{{ product.defaultDisplayedPriceFormatted }}</div>
+        <div class="text-2xl mb-3 font-semibold">{{ product.defaultDisplayedPriceFormatted }}</div>
 
         <AddToCartButton :product="product" class="mb-10" />
 
