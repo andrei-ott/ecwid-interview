@@ -14,7 +14,7 @@ export const useCartStore = defineStore('cart', {
   },
   actions: {
     setItemsFromStorage() {
-      const storage = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || '');
+      const storage = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || '{}');
       if (Array.isArray(storage)) {
         this.items = storage;
       }
